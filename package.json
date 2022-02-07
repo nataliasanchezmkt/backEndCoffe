@@ -1,0 +1,17 @@
+{
+  "name": "backendcrud",
+  "version": "1.0.0",
+  "description": "backend del proyecto crud cafe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "101",
+    "practice",
+    "routes"
+  ],
+  "author": "Natalia Sanchez",
+  "license": "ISC"
+}
