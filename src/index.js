@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import path from 'path';
 
 
 console.log('desde el back');
@@ -28,6 +29,11 @@ app.use(cors());//acepta peticiones remotas o externas
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+// aqui mostramos por defecto el index.html de la carpeta public
+
+app.use(express.static(path.join(__dirname,'../public')))
+
+
 
 
 // hasta aca arranco el back pero si agrego cambios no los percibe, por lo q hay q parar el servidor y arrancarlo de nuevo, pero esto es miuy tedioso por lo q usamos nodemon que actualiza cada vez q hay cambios
@@ -44,4 +50,5 @@ app.get('/products', (req,res)=>{
 app.get('/', (req,res)=>{
     // aca ponemos lo q queresm q pase cuando se ejecute esta consukta
     res.send('hola estoy en la respuesta de la ruta principla')
-})
+});
+
