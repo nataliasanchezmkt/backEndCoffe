@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
+import  router from './routes/productos.routes'
 
 
 console.log('desde el back');
@@ -43,12 +44,16 @@ app.use(express.static(path.join(__dirname,'../public')))
 // ruta de prueba
 // metodo use lleva parametros le indic aa expres q use una ruta para chacer algo especifico
 // set lleva parametros la primera es la ruta , segund es una funcion en forma de flecha q tmb tiene parametros la primera es la consulta y la segubda la respuesta
-app.get('/products', (req,res)=>{
-    // aca ponemos lo q queresm q pase cuando se ejecute esta consukta
-    res.send('hola estoy en la respuesta')
-})
-app.get('/', (req,res)=>{
-    // aca ponemos lo q queresm q pase cuando se ejecute esta consukta
-    res.send('hola estoy en la respuesta de la ruta principla')
-});
+// app.get('/products', (req,res)=>{
+//     // aca ponemos lo q queresm q pase cuando se ejecute esta consukta
+//     res.send('hola estoy en la respuesta')
+// })
+// app.get('/', (req,res)=>{
+//     // aca ponemos lo q queresm q pase cuando se ejecute esta consukta
+//     res.send('hola estoy en la respuesta de la ruta principla')
+// });
 
+
+// aqui van als rutas
+
+app.use('/apicafe', router)
