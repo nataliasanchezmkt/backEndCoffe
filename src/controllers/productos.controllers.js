@@ -4,9 +4,25 @@ import Producto from '../models/producto'
   const productoCtrl = {};
 // agregamos la logica pra opbetener la lista de productos
 
-productoCtrl.listarProductos= (req,res)=>{
+productoCtrl.listarProductos=async (req,res)=>{
     //toda la logica q quiero q suceda para obtener la lista
-    res.send('hola desde el banckend!')
+   try {
+
+    //enviar la lista de productos
+    // crear una rreglo apra q gairde toso lo q encunetre en la bd
+
+    const listaProductos = await Producto.find();
+    res.status(200).json(listaProductos);
+     
+   } catch (error) {
+    console.log(error);
+    //enviar un codigo de error
+    res.status(404).json({
+      mensaje:'Error al intentar listar un producto :('
+
+    })
+     
+   }
 };
 
 productoCtrl.crearProductos= async(req, res) => {
