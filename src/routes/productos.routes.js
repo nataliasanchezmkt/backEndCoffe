@@ -16,7 +16,7 @@ router
 router
   .route("/products/:id")
   .get(productoCtrl.obtenerProducto)
-  .put(productoCtrl.editarProducto);
-
+  .put(productoCtrl.editarProducto)
+  .delete(productoCtrl.borrarProducto);
 // dentro de la misma ruta podemos mandar distintas peitciones sin imopoartar el orden
 export default router;
