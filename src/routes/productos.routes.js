@@ -10,5 +10,6 @@ const router = Router();
 
 router.route('/products').get(productoCtrl.listarProductos).post(productoCtrl.crearProductos)
 
+router.route('/products/:id').get(productoCtrl.obtenerProducto)
 
 export default router;

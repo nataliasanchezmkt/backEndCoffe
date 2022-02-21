@@ -1,3 +1,4 @@
+import { request } from 'express';
 import Producto from '../models/producto'
 
 // controlador de los productos
@@ -55,6 +56,34 @@ productoCtrl.crearProductos= async(req, res) => {
     })
   }
    
+}
+
+
+
+productoCtrl.obtenerProducto = async(req,res)=>{
+  try {
+    //obtenrr el id de la consulta
+    console.log(req.params.id);
+    // buscar el prduuto
+
+    const productoBuscado = await Producto.findById(req.params.id)
+    // enviar la respuesta
+    res.status(200).json(productoBuscado)
+
+
+    // buscar el producto
+
+    // enviar la respuesta
+    
+  } catch (error) {
+    console.log(error);
+    //enviar un codigo de error
+    res.status(404).json({
+      mensaje:'Error no se pudo obtener el producto buscado :('
+
+    })
+    
+  }
 }
 
 export default productoCtrl
