@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 import router from './routes/productos.routes'
+import userRouter from './routes/user.routes'
 import  './database'
 
 console.log('desde el back');
@@ -57,3 +58,4 @@ app.use(express.static(path.join(__dirname,'../public')))
 // aqui van las rutas
 
 app.use('/apicafe', router)
+app.use('/apicafe', userRouter )
