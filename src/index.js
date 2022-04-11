@@ -54,6 +54,6 @@ app.use(express.static(path.join(__dirname,'../public')))
 // });
 
 
-// aqui van als rutas
+// aqui van las rutas
 
 app.use('/apicafe', router)
