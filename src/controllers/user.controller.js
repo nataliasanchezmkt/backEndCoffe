@@ -1,6 +1,9 @@
 import { validateEmail, validatePassword } from '../helpers/ValidateForms';
 import User from '../models/user'
 
+
+const bcrypt = require("bcrypt");
+
 const userCtrl ={}
 
 userCtrl.listarUsuarios= async(req, res)=>{
@@ -19,7 +22,7 @@ userCtrl.crearUsuarios= async(req,res)=>{
     try {
         // validaciones
 
-        if(!validateEmail(req.body.email)|| !validatePassword(req.body.validatePassword)){
+        if(!validateEmail(req.body.email)|| !validatePassword(req.body.password)){
             console.log('no se pudo realziar la validacion')
             res.status(404).json({mensaje: "Error al validar los usuarios"})
             return false
@@ -29,7 +32,7 @@ userCtrl.crearUsuarios= async(req,res)=>{
 
         const nuevoUsuario = new User({
             email: req.body.email,
-            password: req.body.password
+            password: await bcrypt.hash(req.body.password, 10),
         })
 
         await nuevoUsuario.save();
